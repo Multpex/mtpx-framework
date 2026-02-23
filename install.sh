@@ -22,10 +22,4 @@ if [[ ! -x "$SETUP_DIR/install.sh" ]]; then
 fi
 
 echo "[multpex-framework] Executando install.sh do mtpx-framework-setup..."
-if command -v script >/dev/null 2>&1; then
-  script -q /dev/null "$SETUP_DIR/install.sh" "$@"
-elif [[ -r /dev/tty ]]; then
-  "$SETUP_DIR/install.sh" "$@" < /dev/tty
-else
-  "$SETUP_DIR/install.sh" "$@"
-fi
+exec "$SETUP_DIR/install.sh" "$@"
