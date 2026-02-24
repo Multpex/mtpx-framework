@@ -11,7 +11,6 @@ cleanup() {
 }
 trap cleanup EXIT
 
-echo "[multpex-framework] Clonando setup oficial..."
 if ! git clone --depth 1 --quiet "$SETUP_REPO_URL" "$SETUP_DIR"; then
   echo "[multpex-framework] Falha ao clonar $SETUP_REPO_URL" >&2
   exit 1
@@ -21,5 +20,4 @@ if [[ ! -x "$SETUP_DIR/install.sh" ]]; then
   chmod +x "$SETUP_DIR/install.sh"
 fi
 
-echo "[multpex-framework] Executando install.sh do mtpx-framework-setup..."
 exec "$SETUP_DIR/install.sh" "$@"
